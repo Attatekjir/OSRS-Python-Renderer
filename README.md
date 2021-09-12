@@ -19,3 +19,6 @@ SETUP:
 
 Required packages: numpy, numba, jupyter notebook, pandas, matplotlib, PyQt5... and more if it still does not run :).
 
+
+![Screenshot from 2021-09-12 14-29-53](https://user-images.githubusercontent.com/35238304/132987648-da78258e-d8fa-4218-8c31-97a0393907eb.png)
+
