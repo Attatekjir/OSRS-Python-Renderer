@@ -35,24 +35,7 @@ class SceneTileModel:
 
         self.triangleTextureId = None
 
-
-
-
-        # Static
-        # self.tmpScreenX = [0] * 6
-        # self.tmpScreenY = [0] * 6
-        # self.vertexSceneX = [0] * 6
-        # self.vertexSceneY = [0] * 6
-        # self.vertexSceneZ = [0] * 6
-        # self.field1790 = [[1, 3, 5, 7], [1, 3, 5, 7], [1, 3, 5, 7], [1, 3, 5, 7, 6], [1, 3, 5, 7, 6], [1, 3, 5, 7, 6], [1, 3, 5, 7, 6], [
-        #     1, 3, 5, 7, 2, 6], [1, 3, 5, 7, 2, 8], [1, 3, 5, 7, 2, 8], [1, 3, 5, 7, 11, 12], [1, 3, 5, 7, 11, 12], [1, 3, 5, 7, 13, 14]]
-        # self.field1791 = [[0, 1, 2, 3, 0, 0, 1, 3], [1, 1, 2, 3, 1, 0, 1, 3], [0, 1, 2, 3, 1, 0, 1, 3], [0, 0, 1, 2, 0, 0, 2, 4, 1, 0, 4, 3], [0, 0, 1, 4, 0, 0, 4, 3, 1, 1, 2, 4], [0, 0, 4, 3, 1, 0, 1, 2, 1, 0, 2, 4], [0, 1, 2, 4, 1, 0, 1, 4, 1, 0, 4, 3], [0, 4, 1, 2, 0, 4, 2, 5, 1, 0, 4, 5, 1, 0, 5, 3], [
-        #     0, 4, 1, 2, 0, 4, 2, 3, 0, 4, 3, 5, 1, 0, 4, 5], [0, 0, 4, 5, 1, 4, 1, 2, 1, 4, 2, 3, 1, 4, 3, 5], [0, 0, 1, 5, 0, 1, 4, 5, 0, 1, 2, 4, 1, 0, 5, 3, 1, 5, 4, 3, 1, 4, 2, 3], [1, 0, 1, 5, 1, 1, 4, 5, 1, 1, 2, 4, 0, 0, 5, 3, 0, 5, 4, 3, 0, 4, 2, 3], [1, 0, 5, 4, 1, 0, 1, 5, 0, 0, 4, 3, 0, 4, 5, 3, 0, 5, 2, 3, 0, 1, 2, 5]]
-
-
-
-        var7 == var6 and var8 == var6 and var9 == var6
-        self.flatShade = var7
+        self.flatShade = var7 == var6 and var8 == var6 and var9 == var6
 
         self.shape = var1
         self.rotation = var2
@@ -64,11 +47,11 @@ class SceneTileModel:
         var23 = integerdivide(var20 * 3, 4)
         var24 = field1790[var1]
         var25 = len(var24)
-        self.vertexX = np.zeros(shape = (var25), dtype = np.int32) # [0] * var25
-        self.vertexY = np.zeros(shape = (var25), dtype = np.int32) #[0] * var25
-        self.vertexZ = np.zeros(shape = (var25), dtype = np.int32) #[0] * var25
-        var26 = np.zeros(shape = (var25), dtype = np.int32) # [0] * var25
-        var27 = np.zeros(shape = (var25), dtype = np.int32)  #[0] * var25
+        self.vertexX = np.empty(shape = (var25), dtype = np.int32) # [0] * var25
+        self.vertexY = np.empty(shape = (var25), dtype = np.int32) #[0] * var25
+        self.vertexZ = np.empty(shape = (var25), dtype = np.int32) #[0] * var25
+        var26 = np.empty(shape = (var25), dtype = np.int32) # [0] * var25
+        var27 = np.empty(shape = (var25), dtype = np.int32)  #[0] * var25
         var28 = var20 * var4
         var29 = var5 * var20
 
@@ -188,14 +171,14 @@ class SceneTileModel:
 
         var38 = field1791[var1]
         var31 = integerdivide(len(var38), 4)
-        self.field1772 = np.zeros(shape = (var31), dtype = np.int32) #[0] * var31
-        self.field1774 = np.zeros(shape = (var31), dtype = np.int32) #[0] * var31
-        self.field1778 = np.zeros(shape = (var31), dtype = np.int32) #[0] * var31
-        self.triangleColorA = np.zeros(shape = (var31), dtype = np.int32) #[0] * var31
-        self.triangleColorB = np.zeros(shape = (var31), dtype = np.int32) #[0] * var31
-        self.triangleColorC = np.zeros(shape = (var31), dtype = np.int32) #[0] * var31
+        self.field1772 = np.empty(shape = (var31), dtype = np.int32) #[0] * var31
+        self.field1774 = np.empty(shape = (var31), dtype = np.int32) #[0] * var31
+        self.field1778 = np.empty(shape = (var31), dtype = np.int32) #[0] * var31
+        self.triangleColorA = np.empty(shape = (var31), dtype = np.int32) #[0] * var31
+        self.triangleColorB = np.empty(shape = (var31), dtype = np.int32) #[0] * var31
+        self.triangleColorC = np.empty(shape = (var31), dtype = np.int32) #[0] * var31
         if(var3 != -1):
-            self.triangleTextureId = np.zeros(shape = (var31), dtype = np.int32) # [0] * var31
+            self.triangleTextureId = np.empty(shape = (var31), dtype = np.int32) # [0] * var31
 
         var32 = 0
 

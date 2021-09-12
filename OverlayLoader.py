@@ -41,7 +41,7 @@ class OverlayDefinition:
         self.otherSaturation = 0
         self.otherLightness = 0
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def calculateHsl2(overlay, var1):
 
     var2 =  (var1 >> 16 & 255) / 256.0
@@ -97,7 +97,7 @@ def calculateHsl2(overlay, var1):
     elif (overlay.lightness > 255):
         overlay.lightness = 255
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def calculateHsl(overlay):
 
     if (overlay.otherRgbColor != -1):

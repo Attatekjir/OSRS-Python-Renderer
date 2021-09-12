@@ -790,32 +790,32 @@ def setBridge(var1, var2, tiles):
     #tiles[3][var1][var2] = None
 
 
-@jit(nopython=True, cache=False)
-def removeEntity(var1, tiles):
+# @jit(nopython=True, cache=False)
+# def removeEntity(var1, tiles):
 
-    for var2 in range(var1.relativeX, var1.offsetX + 1):
-        for var3 in range(var1.relativeY, var1.offsetY + 1):
-            # tiles[var1.plane][var2][var3]
-            var4 = getTile(var1.plane, var2, var3, tiles)
-            if(var4 is not None):
-                for var5 in range(0, var4.entityCount):
-                    if(var4.objects[var5] == var1):
-                        var4.entityCount -= 1
+#     for var2 in range(var1.relativeX, var1.offsetX + 1):
+#         for var3 in range(var1.relativeY, var1.offsetY + 1):
+#             # tiles[var1.plane][var2][var3]
+#             var4 = getTile(var1.plane, var2, var3, tiles)
+#             if(var4 is not None):
+#                 for var5 in range(0, var4.entityCount):
+#                     if(var4.objects[var5] == var1):
+#                         var4.entityCount -= 1
 
-                        for var6 in range(var5, var4.entityCount):
-                            var4.objects[var6] = var4.objects[var6 + 1]
-                            var4.entityFlags[var6] = var4.entityFlags[var6 + 1]
+#                         for var6 in range(var5, var4.entityCount):
+#                             var4.objects[var6] = var4.objects[var6 + 1]
+#                             var4.entityFlags[var6] = var4.entityFlags[var6 + 1]
 
-                        var4.objects[var4.entityCount] = None
-                        break
+#                         var4.objects[var4.entityCount] = None
+#                         break
 
-                var4.flags = 0
+#                 var4.flags = 0
 
-                for var5 in range(0, var4.entityCount):
-                    var4.flags |= var4.entityFlags[var5]
+#                 for var5 in range(0, var4.entityCount):
+#                     var4.flags |= var4.entityFlags[var5]
 
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def addTile(field1790, field1791, var1, var2, var3, var4, var5, var6, var7, var8, var9,
             var10, var11, var12, var13, var14, var15,
             var16, var17, var18, var19, var20, tiles):
@@ -1608,7 +1608,7 @@ def drawTileOverlay(colorPalette, field2025, regionvars, vertexSceneX, vertexSce
                               var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9])
 
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def setPhysicalLevel(var1, var2, var3, var4, tiles):
     var5 = getTile(var1, var2, var3, tiles)  # tiles[var1][var2][var3]
     # if(var5 is not None):

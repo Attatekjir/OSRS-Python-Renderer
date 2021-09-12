@@ -1,6 +1,6 @@
 from numba import jit
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def adjustRGB(var0, var1):
 
     var3 = (var0 >> 16) / 256.0
@@ -15,7 +15,7 @@ def adjustRGB(var0, var1):
 
     return var11 + (var10 << 8) + (var9 << 16)
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def hslToRGB(pixelvalue):
     
     r = (pixelvalue >> 16 & 255)
@@ -24,7 +24,7 @@ def hslToRGB(pixelvalue):
 
     return r,g,b
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def getTile(var1, var2, var3, tiles):
 
     # 104 is max of var2 and var3
@@ -32,14 +32,14 @@ def getTile(var1, var2, var3, tiles):
     tile = tiles[index]
     return tile
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def getTileID(tile):
 
     # 104 is max of var2 and var3
     index =  (tile.plane * 104 * 104) + (tile.x * 104) + tile.y
     return index
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def putTile(tile, var1, var2, var3, tiles):
     
     # 104 is max of var2 and var3

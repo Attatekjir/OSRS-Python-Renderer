@@ -70,7 +70,6 @@ def method1131(var0, var1):
        (getSmoothNoise(var0, var1, 1) - 128 >> 2)
 
     var2 = np.int32(0.3 * var2) + 35
-    #var2 = 40
 
     # It can not be less than 10, nor higher than 60
     var2 = min(max(var2, 10), 60)
@@ -100,14 +99,8 @@ def groundObjectSpawned(var1, var2, var3, var4, var5, var6, var7, tiles):
 
         var8 = GroundObject(floor, x, y, renderable, hash, renderInfoBitPacked)
 
-        # Tiles already exist...
-        # if(tiles[var1][var2][var3] is None):
-        #    tiles[var1][var2][var3] = Tile(var1, var2, var3)
-
         tile_ = getTile(var1, var2, var3, tiles)
         tile_.groundObject = var8
-
-        #tiles[var1][var2][var3].groundObject = var8
 
 
 # public void addItemPile(var1, var2, var3, var4, final Renderable var5, var6, final Renderable var7, final Renderable var8) :
@@ -192,7 +185,7 @@ def addBoundaryDecoration(var1, var2, var3, var4, var5, var6, var7, var8, var9, 
         #tiles[var1][var2][var3].decorativeObject = var13
 
 
-@jit(nopython=True, cache=False)
+@jit(nopython=True, cache=True)
 def loadTerrain(var0, var1, var2, var3, var4, var5, var6, tileSettings, tileHeights, tileOverlayIds, tileUnderlayIds, tileOverlayPath, overlayRotations):
 
     # if(var2 >= 0 and var2 < 104 and var3 >= 0 and var3 < 104):

@@ -455,8 +455,8 @@ class Canvas(QPlainTextEdit):
         self.displaychannel = 1
         self.pitchCamera = 310
         self.rotate = 1
-        self.xregion = 3300
-        self.yregion = 2900
+        self.xregion = 3210
+        self.yregion = 3430
 
         self.loadChunk(self.xregion, self.yregion)
 

@@ -1,6 +1,6 @@
 from numba import jit
-import math
 import numpy as np
+import math
 
 # Divide two integers in Java style, which differs from python integer division
 @jit(nopython=True, cache=True)
@@ -51,17 +51,3 @@ def method4490(var0, var1, var2):
 
     return (integerdivide(var1, 32) << 7) + (integerdivide(var0, 4) << 10) + integerdivide(var2, 2)
 
-
-# def unsignedrshiftLONG(n, shiftr, bits = 64):
-
-#     def bindigits(n, bits):
-#         s = bin(n & int("1"*bits, 2))[2:]
-#         return ("{0:0>%s}" % (bits)).format(s)
-
-#     bitstring = bindigits(n, bits)
-
-#     #The unsigned right shift operator ">>>" shifts a zero into the leftmost position
-#     result = ("0" * shiftr)  + bitstring[0: -shiftr]
-#     result = int(result, 2)
-
-#     return result
