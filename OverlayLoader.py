@@ -1,12 +1,7 @@
-from Buffer import Buffer
-import numpy as np
 from numba.experimental import jitclass
-from numba import int32, float32, boolean
-from numba import int64, types, typed
-from numba.experimental import jitclass
-import typing as pt
-
+from numba import int32, boolean
 from numba import jit
+import numpy as np
 
 @jitclass()
 class OverlayDefinition:
@@ -41,7 +36,7 @@ class OverlayDefinition:
         self.otherSaturation = 0
         self.otherLightness = 0
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def calculateHsl2(overlay, var1):
 
     var2 =  (var1 >> 16 & 255) / 256.0
@@ -97,7 +92,7 @@ def calculateHsl2(overlay, var1):
     elif (overlay.lightness > 255):
         overlay.lightness = 255
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def calculateHsl(overlay):
 
     if (overlay.otherRgbColor != -1):

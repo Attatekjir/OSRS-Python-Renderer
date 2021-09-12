@@ -3,7 +3,7 @@ import numpy as np
 from numba import jit
 
 # method2786
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def initiateColorPalette(colorPalette, brightness):
 
     colorid = 0

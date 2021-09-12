@@ -202,8 +202,8 @@ def getModel2(uncryptedModelContents, objectDef, objectType, orientation):
         # np.int32(objectDef.objectModels[var9])
         var5 = objectDef.objectModels[var9]
         var10 = objectDef.isRotated ^ orientation > 3
-        if var10:
-            pass
+        #if var10:
+        #    pass
         #    var5 += np.int32(65536)
 
         #var5 == ModelID

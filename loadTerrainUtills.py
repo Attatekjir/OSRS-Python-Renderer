@@ -13,7 +13,7 @@ from expObjectDefinition import getModel
 from Region import method2862
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def method2246(var0, var1, var2, var3):
     var10 = integerdivide(var2 * 1024, var3)
     cosineValue = Graphics3DCOSINE(var10)
@@ -21,7 +21,7 @@ def method2246(var0, var1, var2, var3):
     return np.int32(((65536 - var4) * var0 >> 16) + (var4 * var1 >> 16))
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def method2544(var0, var1):
     var2 = var1 * 57 + var0
     var2 ^= var2 << 13
@@ -33,7 +33,7 @@ def method2544(var0, var1):
     return i4 & 255
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def getSmoothNoise2D(var0, var1):
     var2 = method2544(var0 - 1, var1 - 1) + method2544(var0 + 1, var1 - 1) + \
         method2544(var0 - 1, var1 + 1) + method2544(1 + var0, 1 + var1)
@@ -46,7 +46,7 @@ def getSmoothNoise2D(var0, var1):
 
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def getSmoothNoise(var0, var1, var2):
     var3 = integerdivide(var0, var2)
     var4 = var0 & var2 - 1
@@ -185,11 +185,13 @@ def addBoundaryDecoration(var1, var2, var3, var4, var5, var6, var7, var8, var9, 
         #tiles[var1][var2][var3].decorativeObject = var13
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def loadTerrain(var0, var1, var2, var3, var4, var5, var6, tileSettings, tileHeights, tileOverlayIds, tileUnderlayIds, tileOverlayPath, overlayRotations):
 
     # if(var2 >= 0 and var2 < 104 and var3 >= 0 and var3 < 104):
     if max(var2, var3) < 104 and min(var2, var3) >= 0:
+
+    #if min(var2, var3) >= 16 and max(var2, var3) < 21:
 
         tileSettings[var1][var2][var3] = 0
 
@@ -203,6 +205,7 @@ def loadTerrain(var0, var1, var2, var3, var4, var5, var6, tileSettings, tileHeig
                 else:
                     tileHeights[var1][var2][var3] = tileHeights[var1 -
                                                                 1][var2][var3] - 240
+
                 break
 
             if(var7 == 1):
@@ -214,6 +217,7 @@ def loadTerrain(var0, var1, var2, var3, var4, var5, var6, tileSettings, tileHeig
                 else:
                     tileHeights[var1][var2][var3] = tileHeights[var1 -
                                                                 1][var2][var3] - var8 * 8
+
                 break
 
             if(var7 <= 49):
@@ -735,6 +739,6 @@ def loadChunk(uncryptedModelContents, regionobjects, field2025, regionvars, maxY
 
             # Load objects onto terrain
             loadTerrainObjects(uncryptedModelContents, regionobjects, field2025, regionvars, maxYregion, maxXregion, maxZregion, decodedObjectMapBffr,
-                              eastadjust, xlocal, northadjust, ylocal, field2520, field3831, tileSettings, objectDefinitions,
-                              field749, field746, field738, field740, field752, field750, tileHeights, tiles)
+                             eastadjust, xlocal, northadjust, ylocal, field2520, field3831, tileSettings, objectDefinitions,
+                             field749, field746, field738, field740, field752, field750, tileHeights, tiles)
                               

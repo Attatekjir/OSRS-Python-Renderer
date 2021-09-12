@@ -815,7 +815,7 @@ def setBridge(var1, var2, tiles):
 #                     var4.flags |= var4.entityFlags[var5]
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def addTile(field1790, field1791, var1, var2, var3, var4, var5, var6, var7, var8, var9,
             var10, var11, var12, var13, var14, var15,
             var16, var17, var18, var19, var20, tiles):
@@ -1608,7 +1608,7 @@ def drawTileOverlay(colorPalette, field2025, regionvars, vertexSceneX, vertexSce
                               var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9])
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def setPhysicalLevel(var1, var2, var3, var4, tiles):
     var5 = getTile(var1, var2, var3, tiles)  # tiles[var1][var2][var3]
     # if(var5 is not None):
@@ -1890,9 +1890,9 @@ def draw(colorPalette, field2027, field2040, TILE_WALL_DRAW_FLAGS_1, WALL_UNCULL
 
                                             wallAOccluded = isWallOccluded(field2025, regionvars, tileCycles,
                                                                            var7, var4, var5, var31.orientationA, tileHeights)
-                                            if wallAOccluded:
-                                                raise Exception(
-                                                    "Wow actually True")
+                                            #if wallAOccluded:
+                                                #raise Exception(
+                                                #    "Wow actually True")
                                             firstStatementA = (
                                                 var31.orientationA & var11) != 0
 

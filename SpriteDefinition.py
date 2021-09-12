@@ -2,8 +2,8 @@ from numba import jit
 from Buffer import Buffer
 import numpy as np
 from numba.experimental import jitclass
-from numba import int32, float32, boolean, int8
-from numba import int64, types, typed
+from numba import int32, int8
+from numba import typed
 
 
 spec1 = [
@@ -40,7 +40,7 @@ class SpriteDefinition:
         self.palette = np.empty(shape=(1), dtype=np.int32)
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def normalizeSprite(sprite):
     if (sprite.width != sprite.maxWidth or sprite.height != sprite.maxHeight):
         var1 = np.zeros(
@@ -60,7 +60,7 @@ def normalizeSprite(sprite):
         sprite.offsetY = 0
 
 
-@jit(nopython=True, cache= True)
+@jit(nopython=True, cache=False)
 def loadSprite(id, data, ci):
 
     FLAG_VERTICAL = 0b01

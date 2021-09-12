@@ -3,29 +3,29 @@ import numpy as np
 import math
 
 # Divide two integers in Java style, which differs from python integer division
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def integerdivide(a, b):
     out = a // b
     if out < 0 and a % b != 0:
         out += 1
     return out
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def Graphics3DSINE(var0):
     return np.int32(65536.0 * math.sin(var0 * 0.0030679615))
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def Graphics3DCOSINE(var0):
     return np.int32(65536.0 * math.cos(var0 * 0.0030679615))
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def unsignedrshift(val, n):
     return (val % 0x100000000) >> n
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def nextPowerOfTwo(var0):
 
     var0 -= 1
@@ -38,7 +38,7 @@ def nextPowerOfTwo(var0):
     return var0 + 1
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def method4490(var0, var1, var2):
     if(var2 > 179):
         var1 = integerdivide(var1, 2)

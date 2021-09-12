@@ -1,12 +1,9 @@
 from MathUtills import integerdivide
 
-from numba import int32, float32, boolean, short, int64
-#from FaceNormal import FaceNormal
+from numba import int32, boolean
 import numpy as np
-import math
 from MathUtills import integerdivide
 import numba
-from Graphics3D import method2798, method2799
 from numba.experimental import jitclass
 from expModel import Model
 

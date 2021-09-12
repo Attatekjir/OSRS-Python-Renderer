@@ -327,7 +327,7 @@ def Decode(bffr, keys):
 
 
 # Runelite method
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def loadContents(data, filesCount):
 
     stream = Buffer(data)

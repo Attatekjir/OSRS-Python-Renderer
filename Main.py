@@ -1,7 +1,7 @@
 # %%
 from __future__ import print_function, absolute_import
 import sys
-import PyQt5
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -30,11 +30,11 @@ from Graphics3D import Graphics3D
 
 from Tile import Tile
 from cacheUtills import FileStore
-from MathUtills import integerdivide
+
 import time
 import matplotlib.pyplot as plt
 from Region import drawRegion
-from MathUtills import Graphics3DCOSINE
+
 
 # %%
 
@@ -59,6 +59,8 @@ for lst in field1790listed:
     lstasnumpy = np.asarray(lst, dtype=np.int32)
     field1790.append(lstasnumpy)
 
+
+
 field1791listed = [[0, 1, 2, 3, 0, 0, 1, 3], [1, 1, 2, 3, 1, 0, 1, 3], [0, 1, 2, 3, 1, 0, 1, 3], [0, 0, 1, 2, 0, 0, 2, 4, 1, 0, 4, 3],
                    [0, 0, 1, 4, 0, 0, 4, 3, 1, 1, 2, 4],
                    [0, 0, 4, 3, 1, 0, 1, 2, 1, 0, 2, 4],
@@ -77,7 +79,9 @@ for lst in field1791listed:
     lstasnumpy = np.asarray(lst, dtype=np.int32)
     field1791.append(lstasnumpy)
 
-ci = numba.typeof(np.zeros(shape=(0), dtype=np.int8))
+
+
+ci = numba.typeof(np.zeros(shape=(1,), dtype=np.int8))
 uncryptedModelContents = typed.List.empty_list(ci)
 for ide in range(FILECOUNTS195.MODELS.value):
     uncryptedModelContents.append(FileStore_.FileStoreRead(7, ide))
@@ -85,6 +89,7 @@ for ide in range(FILECOUNTS195.MODELS.value):
 cacheStore_ = cacheStore(FileStore_)
 sprites = cacheStore_.getAllSprites()
 textures = cacheStore_.getAllTextures()
+
 npcDefinitions = cacheStore_.getAllNpcDefinitions()
 objectDefinitions = cacheStore_.getAllObjectDefinitions()
 underlayDefinitions = cacheStore_.getAllUnderlayDefinitions()
@@ -215,14 +220,17 @@ for tile in tiles:
 
 starttime = time.time()
 
-x = 3300  # 3250  # 3250  # 3250  # 3300
-y = 2900  # 3250  # 3250  # 3420  # 3300
-loadChunk(uncryptedModelContents, regionobjects, field2025, regionvars, maxYregion, maxXregion, maxZregion, x, y, FileStore_, field2520, field3831, objectDefinitions,
+x = 3230  # 3250  # 3250  # 3250  # 3300
+y = 3430  # 3250  # 3250  # 3420  # 3300
+#x = 3210 - 64
+#y = 3430
+
+loadChunk(uncryptedModelContents, regionobjects, field2025, regionvars, maxYregion, maxXregion, maxZregion, x, y, 
+        FileStore_, field2520, field3831, objectDefinitions,
           field749, field746, field738, field740, field752, field750, tileSettings, tileHeights,
           tileOverlayIds, tileUnderlayIds, tileOverlayPath, overlayRotations, regionIdToMapIndex, tiles)
 
 print("LoadChunk: ", time.time() - starttime)
-
 
 # %%
 
@@ -449,16 +457,16 @@ class Canvas(QPlainTextEdit):
     def __init__(self):
         super().__init__()
         self.keyspressed = set()
-        self.xcoordCamera = 50
-        self.ycoordCamera = 50
-        self.zcoordCamera = -1200
+        self.xcoordCamera = 10
+        self.ycoordCamera = 10
+        self.zcoordCamera = -2200
         self.displaychannel = 1
         self.pitchCamera = 310
         self.rotate = 1
-        self.xregion = 3210
+        self.xregion = 3210 - 64
         self.yregion = 3430
 
-        self.loadChunk(self.xregion, self.yregion)
+        #self.loadChunk(self.xregion, self.yregion)
 
     def keyReleaseEvent(self, event):
         self.keyspressed.remove(event.key())
@@ -498,26 +506,26 @@ class Canvas(QPlainTextEdit):
 
         self.viewport().update()
 
-    def loadChunk(self, x, y):
-        tileHeights.fill(0)
-        tileSettings.fill(0)
-        tileUnderlayIds.fill(0)
-        tileOverlayIds.fill(0)
-        tileOverlayPath.fill(0)
-        overlayRotations.fill(0)
-        field2520.fill(0)
-        field3831.fill(0)
+    # def loadChunk(self, x, y):
+    #     tileHeights.fill(0)
+    #     tileSettings.fill(0)
+    #     tileUnderlayIds.fill(0)
+    #     tileOverlayIds.fill(0)
+    #     tileOverlayPath.fill(0)
+    #     overlayRotations.fill(0)
+    #     field2520.fill(0)
+    #     field3831.fill(0)
 
-        regionvars.reset()
+    #     regionvars.reset()
 
-        for tile in tiles:
-            tile.reset()
+    #     for tile in tiles:
+    #         tile.reset()
 
-        #x = 3300  # 3250  # 3250  # 3250  # 3300
-        #y = 2900  # 3250  # 3250  # 3420  # 3300
-        loadChunk(uncryptedModelContents, regionobjects, field2025, regionvars, maxYregion, maxXregion, maxZregion, x, y, FileStore_, field2520, field3831, objectDefinitions,
-                  field749, field746, field738, field740, field752, field750, tileSettings, tileHeights,
-                  tileOverlayIds, tileUnderlayIds, tileOverlayPath, overlayRotations, regionIdToMapIndex, tiles)
+    #     #x = 3300  # 3250  # 3250  # 3250  # 3300
+    #     #y = 2900  # 3250  # 3250  # 3420  # 3300
+    #     loadChunk(uncryptedModelContents, regionobjects, field2025, regionvars, maxYregion, maxXregion, maxZregion, x, y, FileStore_, field2520, field3831, objectDefinitions,
+    #               field749, field746, field738, field740, field752, field750, tileSettings, tileHeights,
+    #               tileOverlayIds, tileUnderlayIds, tileOverlayPath, overlayRotations, regionIdToMapIndex, tiles)
 
     def mousePressEvent(self, event):
 

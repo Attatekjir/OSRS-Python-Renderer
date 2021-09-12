@@ -3,17 +3,17 @@ from numba import jit
 from MathUtills import nextPowerOfTwo, unsignedrshift
 from MathUtills import integerdivide
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readUnsignedByte(buffer, index):
     out = buffer[index] & 255
     return out, index + 1
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readByte(buffer, index):
     out = buffer[index]
     return out, index + 1
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readStringIntParameters(buffer, index, hashTable):
 
     # We are not using the results of this operation. Just running it to clear the buffer
@@ -37,7 +37,7 @@ def readStringIntParameters(buffer, index, hashTable):
 
     return hashTable
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def putInt(buffer, index, var1):
     buffer[index] = np.byte(var1 >> 24)
     index += 1
@@ -49,13 +49,13 @@ def putInt(buffer, index, var1):
     index += 1
     return index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readUnsignedShort(buffer, index):
     index += 2
     out = ((buffer[index - 2] & 255) << 8) + (buffer[index - 1] & 255)
     return out, index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readShort(buffer, index):
     index += 2
     var1 = (buffer[index - 1] & 255) + ((buffer[index - 2] & 255) << 8)
@@ -64,21 +64,21 @@ def readShort(buffer, index):
 
     return var1, index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def read24BitInt(buffer, index):
     index += 3
     out = ((buffer[index - 3] & 255) << 16) + \
         (buffer[index - 1] & 255) + ((buffer[index - 2] & 255) << 8)
     return out, index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readInt(buffer, index):
     index += 4
     out = np.int32(((buffer[index - 3] & 255) << 16) + (buffer[index - 1] & 255) +
                    ((buffer[index - 2] & 255) << 8) + ((buffer[index - 4] & 255) << 24))
     return out, index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readUnsignedByteAsBool(buffer, index):
 
     var1, index = readUnsignedByte(buffer, index)
@@ -86,7 +86,7 @@ def readUnsignedByteAsBool(buffer, index):
 
     return out, index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readString(buffer, index):
     result = ""
 
@@ -106,7 +106,7 @@ def readString(buffer, index):
 
     return result, index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readBytes(buffer, index, var2, var3):
 
     out = buffer[index + var2: index + var2 + var3]
@@ -118,11 +118,11 @@ def readBytes(buffer, index, var2, var3):
 
     return out, index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def getLength(buffer):
     return len(buffer)
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def readShortSmart(buffer, index):
 
     # Peak first...
@@ -137,7 +137,7 @@ def readShortSmart(buffer, index):
 
     return result, index
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def getUSmart(buffer, index):
 
     # Peek first
@@ -154,7 +154,7 @@ def getUSmart(buffer, index):
     
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def getIntFromBuffer(buffer, index):
 
     output = \
@@ -166,7 +166,7 @@ def getIntFromBuffer(buffer, index):
     return output, index + 4
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def getShortFromBuffer(buffer, index):
 
     output = ((buffer[index + 0] & 255) << 8) + (buffer[index + 1] & 255)
@@ -177,7 +177,7 @@ def getShortFromBuffer(buffer, index):
     return output, index + 2
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def getMediumFromBuffer(buffer, index):
 
     output = \
@@ -188,7 +188,7 @@ def getMediumFromBuffer(buffer, index):
     return output, index + 3
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def getFromBuffer(buffer, index):
 
     output = buffer[index]
@@ -196,7 +196,7 @@ def getFromBuffer(buffer, index):
     return output, index + 1
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def putIntToBuffer(buffer, index, value):
 
     buffer[index + 0] = np.byte(value >> 24)

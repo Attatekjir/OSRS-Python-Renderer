@@ -10,7 +10,7 @@ from Region import addOcclude
 from Region import setBridge
 
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def method3058(var0, var1) :
     if(var0 == -1) :
         return 12345678
@@ -23,7 +23,7 @@ def method3058(var0, var1) :
 
     return (var0 & 65408) + var1
 
-@jit(nopython=True, cache=True)
+@jit(nopython=True, cache=False)
 def adjustHSLListness0(var0, var1):
     if(var0 == -2):
         # This does happen
